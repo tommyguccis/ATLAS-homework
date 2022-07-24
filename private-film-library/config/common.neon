@@ -1,0 +1,33 @@
+parameters:
+
+
+application:
+	errorPresenter: Error
+	mapping:
+		*: App\*Module\Presenters\*Presenter
+
+
+session:
+	expiration: 14 days
+
+
+di:
+	export:
+		parameters: no
+		tags: no
+
+
+security:
+	users:
+		admin: admin
+
+
+dibi:
+	host: localhost
+	username: root
+	password: 
+	database: private_film_library
+	lazy: true
+
+extensions:
+	dibi: Dibi\Bridges\Nette\DibiExtension22

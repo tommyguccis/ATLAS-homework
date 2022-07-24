@@ -1,0 +1,4 @@
+services:
+	- App\Router\RouterFactory::createRouter
+	- App\Models\CreatorManager
+	- App\Models\FilmManager

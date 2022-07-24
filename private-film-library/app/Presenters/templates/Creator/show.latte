@@ -1,0 +1,22 @@
+{block content}
+
+    {snippet flashMessages}
+		<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+	{/snippet}
+
+    <div class="film-style">
+    <button id="addNewFilmBtn">Edit</button>
+    <a n:href="Creator:delete $creator->id" class="myBtn">Delete</a>
+
+    <div class="film-form">
+        {control creatorForm}
+    </div>    
+
+    {snippet ajaxChange}
+        <h2 n:block="title">{$creator->first_name} {$creator->last_name}</h2>
+        <div>Date of birth: {$creator->date_of_birth|date:'d.m.Y'}</div>
+        <div>Country: {$creator->country}</div>
+        <div>Type: {$creator->type}</div>
+    {/snippet}
+    </div>
+{/block}

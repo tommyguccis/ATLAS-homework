@@ -1,0 +1,22 @@
+{block content}
+
+	{snippet flashMessages}
+		<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+	{/snippet}
+
+	<div class="films-style">
+
+		<h2>Films</h2>
+
+		<button id="addNewFilmBtn">Add new film</button>
+
+		<div class="film-form">
+			{control filmForm}
+		</div>
+		{snippet ajaxChange}
+		<div n:foreach="$films as $film">
+			<div class="film-item"><a n:href="Film:show $film->id">{$film->title}</a></div>
+		</div>
+		{/snippet}
+		</div>
+{/block}

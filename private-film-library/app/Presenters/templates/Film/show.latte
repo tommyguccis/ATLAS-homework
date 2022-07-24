@@ -1,0 +1,49 @@
+{block content}
+
+    {snippet flashMessages}
+		<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+	{/snippet}
+
+
+    <div class="film-style">
+    <button id="addNewFilmBtn">Edit</button>
+    <a n:href="Film:delete $film->id" class="myBtn">Delete</a>
+    <button id="editCreators" class="myBtn">Edit creators</button>
+
+    <div class="film-form">
+        {control filmForm}
+    </div>
+
+    
+    {snippet ajaxChange}
+        <h2 n:block="title">{$film->title}</h2>
+        <div class="film-info">
+            <div><b>Length:</b> {$film->length} min</div>
+            <div><b>Landscape:</b> {$film->landscape}</div>
+            <div><b>Genre:</b> {$film->genre}</div>
+            <div><b>Country:</b> {$film->country}</div>
+        </div>
+    {/snippet}
+    
+
+    <div id="creatorsListAdd">
+        {snippet ajaxListCreatorsAdd}
+                <div n:foreach="$creators as $creator">
+	            	{$creator->creator_type} - {$creator->first_name} {$creator->last_name} <a n:href="addCreator! $film->id, $creator->id" class="ajax addCreatorBtn">Add</a>
+	            </div>
+        {/snippet}
+    </div>
+
+    <div id="creatorsList">
+    {snippet ajaxListCreators}
+        {if ($creatorsList->fetchSingle())}
+            <h3>Creators</h3>
+            <div n:foreach="$creatorsList as $creator">
+                <b>{$creator->creator_type}</b> - {$creator->first_name} {$creator->last_name} <a n:href="removeCreator! $film->id, $creator->id" class="ajax removeCreatorBtn">Remove</a>
+            </div>
+        {/if}
+    {/snippet}
+    </div>
+
+    </div>
+{/block}
